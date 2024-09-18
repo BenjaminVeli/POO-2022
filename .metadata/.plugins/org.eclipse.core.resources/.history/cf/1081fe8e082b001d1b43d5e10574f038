@@ -1,0 +1,33 @@
+package vista;
+import java.util.Scanner;
+
+public class Ejercicio2 {
+	public static void main(String[]args) {
+		Scanner in = new Scanner (System.in);
+		int código , cantidad;
+		String descripción;
+		double precioUnitario;
+		System.out.println("Ingrese el código del producto: ");
+		código = in.nextInt();
+		
+		
+		System.out.println("Ingrese la descripción del producto: ");
+		descripción = in.nextLine();
+		
+		System.out.println("Ingrese la cantidad del producto: ");
+		cantidad = in.nextInt();
+		
+		System.out.println("Ingrese el precio unitario del producto: ");
+		precioUnitario = in.nextDouble();
+		
+		
+		Productos producto = new Productos(código, descripción, precioUnitario);
+        producto.setCantidad(cantidad);
+
+        System.out.println("//////////////*****Detalles*****//////////////");
+        System.out.printf("El precio total (sin descuento de igv): %.2f\n", producto.precioTotal());
+        System.out.printf("El igv: %.2f\n", producto.igv());
+        System.out.printf("El total (con descuento de igv): %.2f\n", producto.total());
+    }
+
+}

@@ -1,0 +1,33 @@
+package vista;
+import java.util.Scanner;
+
+public class Tarea {
+	public static void main(String[]args) {
+		Scanner in = new Scanner (System.in);
+		int código , cantidad;
+		String descripción;
+		double precioUnitario;
+		System.out.println("Ingrese el código del producto: ");
+		código = in.nextInt();
+		
+		
+		System.out.println("Ingrese la descripción del producto: ");
+		descripción = in.nextLine();
+		
+		System.out.println("Ingrese la cantidad del producto: ");
+		cantidad = in.nextInt();
+		
+		System.out.println("Ingrese el precio unitario del producto: ");
+		precioUnitario = in.nextDouble();
+		
+		
+		Tarea1 tarea = new Tarea1(código, descripción, precioUnitario);
+        tarea.setCantidad(cantidad);
+
+        System.out.println("//////////////*****Detalles*****//////////////");
+        System.out.printf("El precio total (sin descuento de igv): %.2f\n", tarea.precioTotal());
+        System.out.printf("El igv: %.2f\n", tarea.igv());
+        System.out.printf("El total (con descuento de igv): %.2f\n", tarea.total());
+    }
+
+}

@@ -1,0 +1,25 @@
+package vista;
+import datos.Trabajador;
+public class Ejemplos2 {
+	public static void main(String[]args) {
+		Trabajador t=new Trabajador();
+		//Asignando valores a cada atributo
+		t.setCodigo(50);
+		t.setNombre("Jose Quispe");
+		t.setOcupacion("DBA");
+		t.setSueldo(4000);
+		//Leemos los valores de cada atributo
+		int cod=t.getCodigo();
+		String nom=t.getNombre();
+		String ocup=t.getOcupacion();
+		double sue=t.getSueldo();
+		//Imprimiendo los valores
+		System.out.println("Codigo: "+cod);
+		System.out.println("Nombre: "+nom);
+		System.out.println("Ocupación: "+ocup);
+		System.out.println("Sueldo: "+sue);
+
+		double dcto=t.descuentoafp();
+		System.out.println("Descuento: "+dcto);
+	}
+}

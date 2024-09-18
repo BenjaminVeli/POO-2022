@@ -1,0 +1,43 @@
+package datos;
+public class Productos {
+	
+	private int codigo;
+	private String descripción;
+	private	int  cantidad;
+	private double  precioUnitario;
+	
+	
+	public Productos(int cod,String desc,int can,double prec) {
+		codigo = cod;
+		descripción = desc;
+		cantidad = can;
+		precioUnitario = prec;
+	}
+	
+	public void setCodigo(int cod) {
+		this.codigo= cod;
+	}
+	public int getCodigo() {
+		return this.codigo;
+	}
+	
+	public String getDescripción() {
+		return descripción;
+	}
+	
+	public void setCantidad(int Cantidad) {
+		cantidad = Cantidad;
+	}
+	
+	public double precioTotal() {
+		return cantidad * precioUnitario;
+	}
+	
+	public double igv() {
+		return precioTotal()*0.13;
+	}
+	
+	public double total() {
+		return precioTotal() - igv();
+	}
+}

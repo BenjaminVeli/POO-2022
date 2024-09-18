@@ -1,0 +1,121 @@
+package datos;
+
+import java.sql.*;
+import javax.swing.JOptionPane;
+
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+public class Mantenimiento {
+	public String driver = "com.mysql.cj.jdbc.Driver";
+	public String cadena = "jdbc:mysql://localhost/inventario";
+	public String usuario = "root";
+	public String clave = "";
+	public Connection conn;
+	public Connection conexion() {
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(cadena, usuario, clave);
+		}
+		catch(ClassNotFoundException e1) {
+			JOptionPane.showMessageDialog(null, "Error en el driver: " + e1.getMessage());
+		}
+		catch(SQLException e2) {
+			JOptionPane.showMessageDialog(null, "Error en la conexión: " + e2.getMessage());
+		}
+		return conn;
+	}
+	
+	public boolean regisalmacen(String direccion, String distrito) {
+		try {
+			CallableStatement cs = conexion().prepareCall("call reg_almacen(?,?)");
+			cs.setString("direccion", direccion);
+			cs.setString("distrito", distrito);
+			cs.execute();
+		}
+		catch(SQLException e3) {
+			JOptionPane.showMessageDialog(null, "Error al registraar el producto: " + e3.getMessage());
+		}
+		return true;
+	}
+	public ResultSet mostalmacen() {
+		ResultSet data = null;
+		try {
+			Statement st = conexion().createStatement();
+			data = st.executeQuery("call mos_almacen");
+		}
+		catch(SQLException e4) {
+			JOptionPane.showMessageDialog(null, "Error al mostrar datos_: " + e4.getMessage());
+		}
+		return data;
+	}
+
+	public boolean regisproducto(String nombre, int stock, Double precio, int codigo_almacen) {
+		try {
+			CallableStatement cs = conexion().prepareCall("call reg_productos(?,?,?,?)");
+			cs.setString("nombre", nombre);
+			cs.setInt("stock", stock);
+			cs.setDouble("precio", precio);
+			cs.setInt("codigo_almacen", codigo_almacen);
+			cs.execute();
+		}
+		catch(SQLException e5) {
+			JOptionPane.showMessageDialog(null, "Error al registrar el producto: " + e5.getMessage());
+		}
+		return true;
+	}
+	
+	public ResultSet mostproducto() {
+		ResultSet data = null;
+		try {
+			Statement st = conexion().createStatement();
+			data = st.executeQuery("call mos_productos");
+		}
+		catch(SQLException e6) {
+			JOptionPane.showMessageDialog(null, "Error al mostrar datos_: " + e6.getMessage());
+		}
+		return data;
+	}
+	
+	public void reporte1(String reporte,String consulta) {
+		try {
+			conn = conexion();
+			String sql = consulta;
+			String ruta = "src/reportes/" + reporte + ".jrxml";
+			JasperDesign jd = JRXmlLoader.load(ruta);
+			JRDesignQuery jrdq = new JRDesignQuery();
+			jrdq.setText(sql);
+			jd.setQuery(jrdq);
+			JasperReport jr = JasperCompileManager.compileReport(jd);
+			JasperPrint jp = JasperFillManager.fillReport(jr, null, conn);
+			JasperViewer.viewReport(jp, false);
+		}
+		catch(Exception e7) {
+			JOptionPane.showMessageDialog(null, "Error en el reporte: " + e7.getMessage());
+		}
+	}
+
+	public void reporte2(String reporte,String consulta) {
+		try {
+			conn = conexion();
+			String sql = consulta;
+			String ruta = "src/reportes/"+reporte+".jrxml";
+			JasperDesign jd = JRXmlLoader.load(ruta);
+			JRDesignQuery jrdq = new JRDesignQuery();
+			jrdq.setText(sql);
+			jd.setQuery(jrdq);
+			JasperReport jr = JasperCompileManager.compileReport(jd);
+			JasperPrint jp = JasperFillManager.fillReport(jr, null, conn);
+			JasperViewer.viewReport(jp, false);
+		}
+		catch(Exception e8) {
+			JOptionPane.showMessageDialog(null, "Error en el reporte: " + e8.getMessage());
+		}
+	}
+}

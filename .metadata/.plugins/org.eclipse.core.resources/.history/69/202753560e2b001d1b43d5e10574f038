@@ -1,0 +1,29 @@
+package vista;
+import datos.Tarea1;
+public class Tarea {
+	public static void main(String[]args) {
+		
+		Tarea1 t = new Tarea1();
+		
+		t.setCodigo(123);
+		t.setDescripción("Productos buenos");
+		t.setCantidad(6);
+		t.setPrecio_unitario(55);
+		
+		double preciounitario = t.precio();
+		double igv = t.igv();
+		double total = t.total();
+		
+		System.out.println("Producto: ");
+		System.out.println("-----------------");
+		System.out.println("Código: " + t.getCodigo());
+		System.out.println("Descripción: " + t.getDescripción());
+		System.out.println("Cantidad: " + t.getCantidad());
+		System.out.println("PrecioUnitario: " + t.getPrecio_unitario());
+		System.out.println("-----------------");
+		System.out.println("Sutotal: " + preciounitario);
+		System.out.println("Sutotal: " + igv);
+		System.out.println("Sutotal: " + total);
+	}
+}
+	

@@ -1,0 +1,29 @@
+package vista;
+import datos.Productos;
+public class prod {
+	public static void main(String[]args) {
+		
+		Productos p = new Productos();
+		
+		p.setCodigo(956827);
+		p.setDescripción("Productos buenos");
+		p.setCantidad(10);
+		p.setPrecio_unitario(130);
+		
+		double preciot = p.precio();
+		double igv = p.igv();
+		double total = p.total();
+		
+		System.out.println("Producto: ");
+		System.out.println("-----------------");
+		System.out.println("Código: " + p.getCodigo());
+		System.out.println("Descripción: " + p.getDescripción());
+		System.out.println("Cantidad: " + p.getCantidad());
+		System.out.println("PrecioUnitario: " + p.getPrecio_unitario());
+		System.out.println("-----------------");
+		System.out.println("Sutotal: " + preciot);
+		System.out.println("Sutotal: " + igv);
+		System.out.println("Sutotal: " + total);
+	}
+}
+	

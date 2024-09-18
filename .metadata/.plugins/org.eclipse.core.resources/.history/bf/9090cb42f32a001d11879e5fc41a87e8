@@ -1,0 +1,20 @@
+package vista;
+
+import datos.Productos;
+
+public class mainProductos {
+
+	
+	public static void main (String[]args) {
+		producto p = new producto();
+		p.setCodigo(0);
+		p.setDescripción(" ");
+		p.setCantidad(0);
+		p.setPrecioUnitario(0,0);
+		p.precioTotal= p.getCantidad() * p.getPrecioUnitario() - p.getCantidad() * p.getPrecioUnitario() * 0.18;
+		System.out.println("El precio total de los productos es : "+ p.getCantidad() * p.getPrecioUnitario() );
+		System.out.println("El igv es : "+ p.getCantidad() * p.getPrecioUnitario() * 0.18);
+		System.out.println("El total a pagar es ; "+ p.precioTotal)
+		
+ 	}
+}

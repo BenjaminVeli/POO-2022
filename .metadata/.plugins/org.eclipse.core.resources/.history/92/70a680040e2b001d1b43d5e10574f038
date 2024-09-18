@@ -1,0 +1,34 @@
+package datos;
+public class Tarea1 {
+	private int codigo;
+	private String descripción;
+	private int cantidad;
+	private double precioUnitario;
+	
+	public void setCodigo(int cod) {
+		this.codigo= cod;}
+	public int getCodigo() {
+		return this.codigo;}
+	
+	public void setDescripción(String des) {
+		this.descripción=des;}
+	public String getDescripción() {
+		return this.descripción;}
+	
+	public void setCantidad(int can) {
+		this.cantidad= can;}
+	public int getCantidad() {
+		return this.cantidad;}
+	
+	public double precioTotal() {
+		return cantidad * precioUnitario;
+	}
+	
+	public double igv() {
+		return precioTotal()*0.13;
+	}
+	
+	public double total() {
+		return precioTotal() - igv();
+	}
+}

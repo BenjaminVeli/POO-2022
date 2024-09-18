@@ -1,0 +1,41 @@
+package datos;
+import java.util.Scanner;
+public class producto{
+	Scanner sc = new Scanner(System.in);
+	private int codigo;
+	private String descripción;
+	private int cantidad;
+	private double precioUnitario;
+	double precioTotal;
+	
+	public void setCodigo(int codigo) {
+		System.out.println("Ingrese el codigo del producto : ");
+			this.codigo = sc.nextInt();		
+	}
+	
+	public int getCodigo() {
+		return codigo;
+	}
+	
+	public void setDescripción(String descripción) {
+		System.out.println("Ingrese la descripción del producto: ");
+	}
+	
+	public String getDescripción() {
+		return descripción;
+	}
+	public void setCantidad(int cantidad) {
+		System.out.println("Ingrese la cantidad de la compra: ");
+		this.cantidad = sc.nextInt();
+	}
+	
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setPrecioUnitario(double precioUnitario) {
+		System.out.println("Ingrese el precio unitario del producto con codigo: "+ this.codigo + "y descripción " + this.descripción);
+	}
+	public double getPrecioUnitario() {
+		return precioUnitario;
+	}
+}

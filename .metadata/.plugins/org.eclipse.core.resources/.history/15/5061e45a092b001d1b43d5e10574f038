@@ -1,0 +1,33 @@
+package poo;
+import java.util.Scanner;
+
+public class weas {
+	public static void main(String[]args) {
+		Scanner in = new Scanner (System.in);
+		int codigo , cantidad;
+		String descripción;
+		double precioUnitario;
+		System.out.println("Ingrese el código del producto: ");
+		codigo = in.nextInt();
+		
+		
+		System.out.println("Ingrese la descripción del producto: ");
+		descripción = in.nextLine();
+		
+		System.out.println("Ingrese la cantidad del producto: ");
+		cantidad = in.nextInt();
+		
+		System.out.println("Ingrese el precio unitario del producto: ");
+		precioUnitario = in.nextDouble();
+		
+		
+		Proyecto proyecto = new Proyecto(codigo, descripción,cantidad, precioUnitario);
+	        proyecto.setCantidad(cantidad);
+
+        System.out.println("//////////////*****Detalles*****//////////////");
+        System.out.printf("El precio total (sin descuento de igv): %.2f\n", proyecto.precioTotal());
+        System.out.printf("El igv: %.2f\n", proyecto.igv());
+        System.out.printf("El total (con descuento de igv): %.2f\n", proyecto.total());
+    }
+
+}

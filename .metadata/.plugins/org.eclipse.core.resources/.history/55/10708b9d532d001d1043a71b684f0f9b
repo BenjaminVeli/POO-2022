@@ -1,0 +1,35 @@
+package datos;
+public class Trabajador {
+	private int codigo;
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getOcupacion() {
+		return ocupacion;
+	}
+	public void setOcupacion(String ocupacion) {
+		this.ocupacion = ocupacion;
+	}
+	public double getSueldo() {
+		return sueldo;
+	}
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
+	}
+	private String nombre;
+	private String ocupacion;
+	private double sueldo;
+	public double descuentoafp() {
+		double dcto=sueldo*0.13;
+		return dcto;
+	}
+}

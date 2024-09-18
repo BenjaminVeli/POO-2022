@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class ManejaProducto {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String codigo, descripcion;
+        double precioUnitario;
+        int cantidad;
+        System.out.println("Ingrese codigo de producto: ");
+        codigo = in.nextLine();
+
+        System.out.println("Ingrese la descripcion producto: ");
+        descripcion = in.nextLine();
+
+        System.out.println("Ingrese el precio unitario del producto: ");
+        precioUnitario = in.nextDouble();
+
+        System.out.println("Ingrese la cantidad de unidades de compra del producto: ");
+        cantidad = in.nextInt();
+
+        Producto producto = new Producto(codigo, descripcion, precioUnitario);
+        producto.setCantidad(cantidad);
+
+        System.out.println("//////////////*****Detalles*****//////////////");
+        System.out.printf("El precio total (sin descuento de igv): %.2f\n", producto.precioTotal());
+        System.out.printf("El igv: %.2f\n", producto.igv());
+        System.out.printf("El total (con descuento de igv): %.2f\n", producto.total());
+    }
+
+}
